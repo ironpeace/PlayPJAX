@@ -1,0 +1,20 @@
+#{extends 'main.html' /}
+#{set title:'Play PJAX' /}
+
+#{get 'moreScripts' /}
+<script src="@{'/public/javascripts/jquery.pjax.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+ 
+<script type="text/javascript">
+$(function(){
+	$("a.js-pjax").pjax("#main");
+});
+</script>
+
+<a href="/?data1=foo" class="js-pjax">/?data1=foo</a>
+
+<div id="main">
+#{if results}
+	*{ #{result /}とやってしまうと駄目。 }*
+	#{include 'tags/result.html' /}
+#{/if}
+</div>
